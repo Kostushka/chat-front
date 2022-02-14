@@ -1,10 +1,13 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.jsx',
+    entry: ['@babel/polyfill', './src/index.jsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
@@ -14,38 +17,82 @@ module.exports = {
         port: 3000,
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            '@components': path.resolve(__dirname, 'src/components'),
+            '@containers': path.resolve(__dirname, 'src/containers'),
+        },
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+        minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            favicon: 'src/assets/favicon.svg',
+        }),
         new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name].[hash].css',
+        }),
     ],
     module: {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
                     },
                 },
-                exclude: /node_modules/,
             },
             {
                 test: /\.jsx$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-react'],
                     },
                 },
+            },
+            {
+                test: /\.ts$/,
                 exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-typescript',
+                        ],
+                    },
+                },
+            },
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-typescript',
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.module\.css$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -58,19 +105,12 @@ module.exports = {
             },
             {
                 test: /^((?!\.module).)*css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
-
-            // {
-            //     test: /\.ts$/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: ['@babel/preset-typescript'],
-            //         },
-            //     },
-            //     exclude: /node_modules/,
-            // },
+            {
+                test: /\.(jpeg|jpg|png|svg)$/,
+                use: ['file-loader'],
+            },
         ],
     },
 };
