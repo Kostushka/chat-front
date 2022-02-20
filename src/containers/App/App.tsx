@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from '@components/AppRouter';
 import styles from './App.module.css';
+import Navigation from '@components/Navigation';
 
-const App = () => {
+const App: FC = () => {
     return (
-        <>
-            <h1 className={styles.name}>Hello</h1>
-            <h1>Hello</h1>
-        </>
+        <BrowserRouter>
+            <Navigation />
+            <AppRouter />
+        </BrowserRouter>
     );
 };
 
