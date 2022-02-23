@@ -4,10 +4,14 @@ import styles from './Navigation.module.css';
 
 const Navigation: FC = () => {
     return (
-        <>
-            <NavLink to='/'>Главная</NavLink>
-            <NavLink to='/login'>Вход</NavLink>
-        </>
+        <ul className={styles.container}>
+            <li className={styles.nav}>
+                <NavLink to='/'>Главная</NavLink>
+            </li>
+            <li className={styles.nav}>
+                <NavLink to='/login'>Вход</NavLink>
+            </li>
+        </ul>
     );
 };
 
