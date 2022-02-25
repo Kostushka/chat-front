@@ -1,0 +1,17 @@
+.btn {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid rgb(255, 182, 47);
+    border-radius: 5px;
+    background: rgba(253, 171, 19, 0.719);
+}
+.btn:hover {
+    background-color: rgba(241, 188, 74, 0.788);
+    border-color: rgb(194, 98, 19);
+    cursor: pointer;
+}
+.btn:disabled {
+    cursor: auto;
+    background-color: rgb(219, 219, 219);
+    border-color: rgb(163, 161, 161);
+}
