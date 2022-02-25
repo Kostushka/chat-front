@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './RegistrationForm.module.css';
 
 const RegistrationForm: FC = () => {
-    return (
-        <>
-            <h1>Регистрация</h1>
-            <div>
-                <Link to='/login'>Логин</Link>
-            </div>
-        </>
-    );
+    return <div>register</div>;
 };
 
 export default RegistrationForm;
