@@ -14,10 +14,6 @@ export const publicRoutes: IRoute[] = [
         element: <Login />,
     },
     {
-        path: '/registration',
-        element: <RegistrationForm />,
-    },
-    {
         path: '*',
         element: <Login />,
     },

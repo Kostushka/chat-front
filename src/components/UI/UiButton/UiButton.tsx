@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 import styles from './UiButton.module.css';
 
-interface UiButtonProps {
-    value: string;
-}
-
-const UiButton: FC<UiButtonProps> = ({ children, ...props }) => {
+const UiButton: FC = ({ children, ...props }) => {
     return (
         <button className={styles.btn} {...props}>
             {children}

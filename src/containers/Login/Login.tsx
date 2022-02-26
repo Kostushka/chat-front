@@ -1,20 +1,19 @@
-import React, {useState} from 'react';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, FC } from 'react';
 import UiButton from '@components/UI/UiButton';
+import LoginForm from '@components/LoginForm';
+import RegistrationForm from '@components/RegistrationForm';
 import styles from './Login.module.css';
 
-import {LoginForm} from "../../components/LoginForm/LoginForm";
-import RegistrationForm from "../../components/RegistrationForm";
-
 const Login: FC = () => {
-    const [isLogin, setLogin] = useState(true);
-
-
-    return <div>
-        <button onClick={() => setLogin(prevState => !prevState)}>{isLogin ? 'Register' : 'Login'}</button>
-        {isLogin ? <LoginForm/> : <RegistrationForm/>}
-    </div>;
+    const [isLogin, setIsLogin] = useState(true);
+    return (
+        <>
+            {isLogin ? <LoginForm /> : <RegistrationForm />}
+            <UiButton onClick={() => setIsLogin(!isLogin)}>
+                {isLogin ? 'Логин' : 'Регистрация'}
+            </UiButton>
+        </>
+    );
 };
 
 export default Login;
