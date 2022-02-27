@@ -1,7 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styles from './UiButton.module.css';
 
-const UiButton: FC = ({ children, ...props }) => {
+interface UiButtonProps {
+    children: ReactNode;
+    type?: 'submit' | 'button';
+}
+
+const UiButton: FC<UiButtonProps> = ({ children, ...props }) => {
     return (
         <button className={styles.btn} {...props}>
             {children}
