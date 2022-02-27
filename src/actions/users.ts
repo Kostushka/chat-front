@@ -1,21 +1,21 @@
-import {Server} from "@/server";
+import { Server } from '@/server';
 
 interface IRegisterUser {
-    username: string,
-    password: string,
-    email: string,
-    gender?: string
+    username: string;
+    password: string;
+    email: string;
+    gender?: string;
 }
 
-interface ILoginUser {
-    username: string,
-    password: string
+export interface ILoginUser {
+    username: string;
+    password: string;
 }
 
 export const registerUser = (data: IRegisterUser) => {
     return Server('post', 'api/users/signup', data);
-}
+};
 
 export const loginUser = (data: ILoginUser) => {
     return Server('post', 'api/users/login', data);
-}
+};
