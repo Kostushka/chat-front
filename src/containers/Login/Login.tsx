@@ -7,12 +7,12 @@ import styles from './Login.module.css';
 const Login: FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     return (
-        <>
+        <div className={styles.container}>
             {isLogin ? <LoginForm /> : <RegistrationForm />}
             <UiButton onClick={() => setIsLogin(!isLogin)}>
-                {isLogin ? 'Логин' : 'Регистрация'}
+                {isLogin ? 'Регистрация' : 'Логин'}
             </UiButton>
-        </>
+        </div>
     );
 };
 
