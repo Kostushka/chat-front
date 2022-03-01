@@ -1,6 +1,6 @@
 import { Server } from '@/server';
 
-interface IRegisterUser {
+export interface IRegisterUser {
     username: string;
     password: string;
     email: string;

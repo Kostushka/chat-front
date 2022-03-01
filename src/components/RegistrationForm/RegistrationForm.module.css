@@ -1,0 +1,14 @@
+.form {
+    display: flex;
+    margin: 60px auto;
+}
+.login {
+    color: rgba(255, 172, 47, 0.897);
+    margin-bottom: 15px;
+    text-align: center;
+}
+/* .error {
+    color: red;
+    font-size: 0.8em;
+    margin: 5px 0;
+} */
