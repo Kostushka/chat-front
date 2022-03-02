@@ -4,7 +4,7 @@ import { privateRoutes, publicRoutes } from '@routes/routesConfig';
 import { IRoute } from '../../routes/routesConfig';
 
 const AppRouter: FC = () => {
-    const isAuth = true;
+    const isAuth = false;
     return (
         <Routes>
             {isAuth

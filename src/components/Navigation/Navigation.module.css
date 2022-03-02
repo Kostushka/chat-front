@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    list-style-type: none;
+    width: 100vw;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgba(255, 166, 0, 0.76);
+}
+.nav {
+    padding: 10px 15px;
+}
+.nav a {
+    min-width: 70px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+}
+.nav a:hover {
+    border-bottom: 2px solid black;
+}

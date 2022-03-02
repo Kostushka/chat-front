@@ -15,13 +15,16 @@ module.exports = {
     },
     devServer: {
         port: 3000,
+        historyApiFallback: true,
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
+            '@': path.resolve(__dirname, 'src'),
             '@components': path.resolve(__dirname, 'src/components'),
             '@containers': path.resolve(__dirname, 'src/containers'),
             '@routes': path.resolve(__dirname, 'src/routes'),
+            '@actions': path.resolve(__dirname, 'src/actions')
         },
     },
     optimization: {
