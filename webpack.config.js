@@ -9,7 +9,7 @@ module.exports = {
     mode: 'development',
     entry: ['@babel/polyfill', './src/index.tsx'],
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../chat_server/dist'),
         filename: '[name].[hash].js',
         publicPath: './',
     },
