@@ -1,4 +1,4 @@
-import { Server } from '@/server';
+import { Server } from '@/helpers/server';
 
 export interface IRegisterUser {
     username: string;

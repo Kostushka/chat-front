@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from '@routes/routesConfig';
 import { IRoute } from '../../routes/routesConfig';
+import {getCookie} from "@/helpers/cookie";
 
 const AppRouter: FC = () => {
-    const isAuth = false;
+    const isAuth = !!getCookie('sessionId');
     return (
         <Routes>
             {isAuth
