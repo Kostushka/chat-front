@@ -19,7 +19,3 @@ export const registerUser = (data: IRegisterUser) => {
 export const loginUser = (data: ILoginUser) => {
     return Server('post', 'api/users/login', data);
 };
-
-export const checkAccess = () => {
-    Server('get', '/');
-}
