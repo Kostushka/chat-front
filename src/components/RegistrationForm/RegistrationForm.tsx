@@ -17,7 +17,7 @@ const RegistrationForm: FC = () => {
                     username: '',
                     password: '',
                     email: '',
-                    gender: '',
+                    gender: 'male',
                 }}
                 validationSchema={yup.object({
                     username: yup
@@ -35,7 +35,7 @@ const RegistrationForm: FC = () => {
                         .required('Это обязательное поле!'),
                     gender: yup
                         .mixed()
-                        .oneOf(['Мужской', 'Женский'])
+                        .oneOf(['male', 'female'])
                         .defined('Укажите пол'),
                 })}
                 onSubmit={(values: IRegisterUser) => {
@@ -59,12 +59,13 @@ const RegistrationForm: FC = () => {
                             <UiRadioButton
                                 name='gender'
                                 label='Мужчина'
-                                value='Мужской'
+                                value='male'
+                                defaultChecked
                             />
                             <UiRadioButton
                                 name='gender'
                                 label='Женщина'
-                                value='Женский'
+                                value='female'
                             />
                         </div>
                         {errors.gender && (
