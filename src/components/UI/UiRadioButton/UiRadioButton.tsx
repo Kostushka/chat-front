@@ -6,6 +6,7 @@ interface UiRadioButtonProps {
     name: string;
     label: string;
     value: string;
+    defaultChecked?: boolean;
 }
 
 const UiRadioButton: FC<UiRadioButtonProps> = ({ label, ...props }) => {
