@@ -5,6 +5,7 @@ import { IRoute } from '../../routes/routesConfig';
 import {getCookie} from "@/helpers/cookie";
 
 const AppRouter: FC = () => {
+    console.log(!!getCookie('sessionId'))
     const isAuth = !!getCookie('sessionId');
     return (
         <Routes>
