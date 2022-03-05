@@ -1,18 +1,14 @@
 import React, {FC} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {chatRoutes} from '@routes/routesConfig';
-import {IRoute} from '../../routes/routesConfig';
+import Chat from "@containers/Chat";
+import Login from "@containers/Login";
 
 const AppRouter: FC = () => {
     return (
         <Routes>
-            {chatRoutes.map((route: IRoute) => (
-                <Route
-                    key={route.path}
-                    path={route.path}
-                    element={route.element}
-                />
-            ))}
+            <Route path='/' element={<Chat/>}>
+                <Route path='login' element={<Login/>}/>
+            </Route>
         </Routes>
     );
 };
