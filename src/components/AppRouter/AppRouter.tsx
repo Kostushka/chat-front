@@ -6,9 +6,8 @@ import Login from "@containers/Login";
 const AppRouter: FC = () => {
     return (
         <Routes>
-            <Route path='/' element={<Chat/>}>
-                <Route path='login' element={<Login/>}/>
-            </Route>
+            <Route path='/' element={<Chat/>}/>
+            <Route path='login' element={<Login/>}/>
         </Routes>
     );
 };
