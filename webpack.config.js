@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -5,13 +6,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-    mode: 'development',
+    mode: process.env.NODE_ENV || 'development',
     entry: ['@babel/polyfill', './src/index.tsx'],
     output: {
-        path: path.resolve(__dirname, '../chat_server/dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
-        publicPath: './',
+        publicPath: '/',
     },
     devServer: {
         port: 3000,

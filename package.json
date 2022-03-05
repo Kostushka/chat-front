@@ -5,9 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack serve --mode development --open",
+        "start": "cross-env NODE_ENV=development webpack serve --open",
         "dev": "webpack --mode development",
-        "build": "webpack --mode production"
+        "build": "cross-env NODE_ENV=production webpack"
     },
     "author": "",
     "license": "ISC",
@@ -35,6 +35,8 @@
         "@types/react-dom": "^17.0.11",
         "@types/react-router-dom": "^5.3.3",
         "axios": "^0.26.0",
+        "cross-env": "^7.0.3",
+        "dotenv": "^16.0.0",
         "formik": "^2.2.9",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
