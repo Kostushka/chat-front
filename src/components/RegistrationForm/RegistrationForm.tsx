@@ -33,10 +33,6 @@ const RegistrationForm: FC = () => {
                         .string()
                         .email('Неверный email')
                         .required('Это обязательное поле!'),
-                    gender: yup
-                        .mixed()
-                        .oneOf(['male', 'female'])
-                        .defined('Укажите пол'),
                 })}
                 onSubmit={(values: IRegisterUser) => {
                     registerUser(values)
@@ -44,7 +40,7 @@ const RegistrationForm: FC = () => {
                         .catch((err: any) => console.log('err', err));
                 }}
             >
-                {({ errors }) => (
+                {() => (
                     <Form>
                         <h1 className={styles.login}>Регистрация</h1>
 
@@ -68,9 +64,7 @@ const RegistrationForm: FC = () => {
                                 value='female'
                             />
                         </div>
-                        {errors.gender && (
-                            <div className={styles.error}>{errors.gender}</div>
-                        )}
+
                         <UiButton type='submit'>Отправить</UiButton>
                     </Form>
                 )}
