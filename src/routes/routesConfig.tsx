@@ -7,10 +7,20 @@ export interface IRoute {
     element: React.ReactNode;
 }
 
-export const chatRoutes: IRoute[] = [
+export const publicRoutes: IRoute[] = [
     {
         path: 'login',
         element: <Login />,
+    },
+    {
+        path: '*',
+        element: <Login />,
+    },
+];
+export const privateRoutes: IRoute[] = [
+    {
+        path: '/',
+        element: <Chat />,
     },
     {
         path: '*',
