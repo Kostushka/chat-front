@@ -4,7 +4,7 @@ import styles from './Navigation.module.css';
 import * as CookieHelper from "@/helpers/cookie";
 
 const Navigation: FC = () => {
-    const isAuth = !!CookieHelper.get('sessionId');
+    const isAuth = !!CookieHelper.get('chat_session_id');
 
     return (
         <ul className={styles.container}>
@@ -16,7 +16,7 @@ const Navigation: FC = () => {
             </li>}
             {isAuth && <li className={styles.nav}>
                 <NavLink onClick={() => {
-                    CookieHelper.del('sessionId');
+                    CookieHelper.del('chat_session_id');
                     location.replace('/login');
                 }} to='/login'>Выход</NavLink>
             </li>}
