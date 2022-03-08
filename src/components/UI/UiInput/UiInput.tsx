@@ -15,7 +15,7 @@ const UiInput: FC<UiInputProps> = ({ label, ...props }) => {
             <label htmlFor={props.name}>{label}</label>
             <input className={styles.input} {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div className={styles.error}>{meta.error}</div>
+                <div className='error'>{meta.error}</div>
             ) : null}
         </>
     );
