@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -15,6 +16,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
         publicPath: '/',
+        chunkFilename: '[name].[id].[hash].js',
     },
     devServer: {
         port: 3000,
@@ -32,18 +34,21 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all',
+            chunks: 'initial',
         },
         minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
-            favicon: 'src/assets/favicon.svg',
+            template: './src/index.html'
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
+        }),
+        new FaviconsWebpackPlugin({
+            logo: path.resolve(__dirname, './src/assets/favicon.svg'),
+            prefix: 'icons-[hash]/',
         }),
     ],
     module: {

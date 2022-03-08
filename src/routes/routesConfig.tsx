@@ -1,6 +1,6 @@
-import React from 'react';
-import Login from '@containers/Login';
-import Chat from '@containers/Chat';
+import React, {lazy, Suspense} from 'react';
+const Chat = lazy(() => import('@containers/Chat'));
+const Login = lazy(() => import('@containers/Login'));
 
 export interface IRoute {
     path: string;
@@ -10,20 +10,20 @@ export interface IRoute {
 export const publicRoutes: IRoute[] = [
     {
         path: 'login',
-        element: <Login />,
+        element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense>,
     },
     {
         path: '*',
-        element: <Login />,
+        element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense>,
     },
 ];
 export const privateRoutes: IRoute[] = [
     {
         path: '/',
-        element: <Chat />,
+        element: <Suspense fallback={<div>Loading...</div>}><Chat /></Suspense>,
     },
     {
         path: '*',
-        element: <Chat />,
+        element: <Suspense fallback={<div>Loading...</div>}><Chat /></Suspense>,
     },
 ];
