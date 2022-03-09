@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -29,7 +28,7 @@ module.exports = {
             '@components': path.resolve(__dirname, 'src/components'),
             '@containers': path.resolve(__dirname, 'src/containers'),
             '@routes': path.resolve(__dirname, 'src/routes'),
-            '@actions': path.resolve(__dirname, 'src/actions')
+            '@actions': path.resolve(__dirname, 'src/actions'),
         },
     },
     optimization: {
@@ -40,15 +39,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: 'src/assets/favicon.svg',
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
-        }),
-        new FaviconsWebpackPlugin({
-            logo: path.resolve(__dirname, './src/assets/favicon.svg'),
-            prefix: 'icons-[hash]/',
         }),
     ],
     module: {

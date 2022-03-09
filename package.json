@@ -37,7 +37,6 @@
         "axios": "^0.26.0",
         "cross-env": "^7.0.3",
         "dotenv": "^16.0.0",
-        "favicons-webpack-plugin": "^5.0.2",
         "formik": "^2.2.9",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
