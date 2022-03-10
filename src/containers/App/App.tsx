@@ -1,15 +1,16 @@
-import React, {FC} from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import React, { FC } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import AppRouter from '@components/AppRouter';
-import styles from './App.module.css';
 import Navigation from '@components/Navigation';
+import styles from './App.module.css';
 
 const App: FC = () => {
-
     return (
         <BrowserRouter>
-            <Navigation/>
-            <AppRouter/>
+            <Navigation />
+            <div className={styles.container}>
+                <AppRouter />
+            </div>
         </BrowserRouter>
     );
 };

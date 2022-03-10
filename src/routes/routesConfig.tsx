@@ -1,6 +1,7 @@
-import React, {lazy, Suspense} from 'react';
+import React, { lazy, Suspense } from 'react';
 const Chat = lazy(() => import('@containers/Chat'));
 const Login = lazy(() => import('@containers/Login'));
+import UiPreloader from '@components/UI/UiPreloader';
 
 export interface IRoute {
     path: string;
@@ -10,20 +11,36 @@ export interface IRoute {
 export const publicRoutes: IRoute[] = [
     {
         path: 'login',
-        element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense>,
+        element: (
+            <Suspense fallback={<UiPreloader />}>
+                <Login />
+            </Suspense>
+        ),
     },
     {
         path: '*',
-        element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense>,
+        element: (
+            <Suspense fallback={<UiPreloader />}>
+                <Login />
+            </Suspense>
+        ),
     },
 ];
 export const privateRoutes: IRoute[] = [
     {
         path: '/',
-        element: <Suspense fallback={<div>Loading...</div>}><Chat /></Suspense>,
+        element: (
+            <Suspense fallback={<UiPreloader />}>
+                <Chat />
+            </Suspense>
+        ),
     },
     {
         path: '*',
-        element: <Suspense fallback={<div>Loading...</div>}><Chat /></Suspense>,
+        element: (
+            <Suspense fallback={<UiPreloader />}>
+                <Chat />
+            </Suspense>
+        ),
     },
 ];
