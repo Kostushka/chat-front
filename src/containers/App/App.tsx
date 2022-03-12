@@ -8,9 +8,7 @@ const App: FC = () => {
     return (
         <BrowserRouter>
             <Navigation />
-            <div className={styles.container}>
-                <AppRouter />
-            </div>
+            <AppRouter />
         </BrowserRouter>
     );
 };
