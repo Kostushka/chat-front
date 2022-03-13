@@ -10,3 +10,36 @@
 .chat {
     padding: 20px;
 }
+.field {
+    height: 55vh;
+    border: 1px solid rgba(29, 28, 28, 0.897);
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 10px;
+    overflow: auto;
+    word-break: break-all;
+    white-space: pre-line;
+}
+.field__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.message {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2em;
+    padding: 0.5rem 0.7rem;
+    margin-bottom: 10px;
+    background-color: rgb(240, 240, 197);
+}
+.textarea {
+    width: 100%;
+    height: 15vh;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 20px;
+    outline: none;
+}
+.textarea:focus {
+    border-color: chocolate;
+}
