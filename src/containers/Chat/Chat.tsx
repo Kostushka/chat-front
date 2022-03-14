@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import UiButton from '@components/UI/UiButton';
 import styles from './Chat.module.css';
+import { useTypedSelector } from '../../store';
+import { useDispatch } from 'react-redux';
+import { FetchMessagesSuccessActionCreator } from '../../store/reducers/messagesReducer';
 
-const Chat = () => {
-    const [message, setMessage] = useState([{}]);
+const Chat: FC = () => {
     const [value, setValue] = useState('');
+    // const [message, setMessage] = useState([{}]);
+
+    const { messages } = useTypedSelector((state) => state.messages);
+    const dispatch = useDispatch();
+
     const handleSubmit = () => {
         const newMessage = {
+            id: new Date().toLocaleTimeString(),
             value,
         };
-        setMessage([...message, newMessage]);
+        dispatch(FetchMessagesSuccessActionCreator(newMessage));
+        // setMessage([...message, newMessage]);
         setValue('');
     };
     return (
@@ -19,12 +28,17 @@ const Chat = () => {
                 Chat
                 <div className={styles.field}>
                     <div className={styles.field__container}>
-                        {message.map((el: any, i) => {
+                        {messages.map((el: any, i) => {
                             if (el.value) {
                                 return (
-                                    <p className={styles.message} key={i}>
-                                        {el.value}
-                                    </p>
+                                    <div key={el.id}>
+                                        <p className={styles.message}>
+                                            {el.value}
+                                        </p>
+                                        <div className={styles.date}>
+                                            {el.id}
+                                        </div>
+                                    </div>
                                 );
                             }
                         })}

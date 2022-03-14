@@ -42,7 +42,7 @@ module.exports = {
             template: './src/index.html',
             favicon: 'src/assets/favicon.svg',
             minify: isDev,
-            publicPath: './'
+            publicPath: './',
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
