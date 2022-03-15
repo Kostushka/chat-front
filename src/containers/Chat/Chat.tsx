@@ -49,7 +49,7 @@ const Chat: FC = () => {
                         className={styles.textarea}
                         value={value}
                         onChange={(e) => setValue(e.currentTarget.value)}
-                    ></textarea>
+                    />
                     <div>
                         <UiButton onClick={handleSubmit} type='button'>
                             Отправить
