@@ -3,6 +3,7 @@ import {
     MessagesAction,
     MessagesActionType,
     MessagesState,
+    MessageType,
 } from '../../types/messages';
 
 const initialState: MessagesState = {
@@ -26,7 +27,7 @@ export const messagesReducer = (
 };
 
 export const FetchMessagesSuccessActionCreator = (
-    payload: object
+    payload: MessageType
 ): FetchMessagesSuccessAction => ({
     type: MessagesActionType.FETCH_MESSAGES_SUCCESS,
     payload,

@@ -1,5 +1,10 @@
+export type MessageType = {
+    id: string;
+    message: string;
+};
+
 export interface MessagesState {
-    messages: object[];
+    messages: Array<MessageType>;
 }
 
 export enum MessagesActionType {
@@ -8,7 +13,7 @@ export enum MessagesActionType {
 
 export interface FetchMessagesSuccessAction {
     type: MessagesActionType.FETCH_MESSAGES_SUCCESS;
-    payload: object;
+    payload: MessageType;
 }
 
 export type MessagesAction = FetchMessagesSuccessAction;

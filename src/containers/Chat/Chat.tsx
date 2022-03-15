@@ -15,7 +15,7 @@ const Chat: FC = () => {
     const handleSubmit = () => {
         const newMessage = {
             id: new Date().toLocaleTimeString(),
-            value,
+            message: value,
         };
         dispatch(FetchMessagesSuccessActionCreator(newMessage));
         // setMessage([...message, newMessage]);
@@ -28,12 +28,12 @@ const Chat: FC = () => {
                 Chat
                 <div className={styles.field}>
                     <div className={styles.field__container}>
-                        {messages.map((el: any, i) => {
-                            if (el.value) {
+                        {messages.map((el: any) => {
+                            if (el.message) {
                                 return (
                                     <div key={el.id}>
                                         <p className={styles.message}>
-                                            {el.value}
+                                            {el.message}
                                         </p>
                                         <div className={styles.date}>
                                             {el.id}
