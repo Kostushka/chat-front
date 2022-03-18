@@ -1,5 +1,6 @@
 import {
-    FetchMessagesSuccessAction,
+    AddMessagesAction,
+    GetMessagesAction,
     MessagesAction,
     MessagesActionType,
     MessagesState,
@@ -15,7 +16,12 @@ export const messagesReducer = (
     action: MessagesAction
 ): MessagesState => {
     switch (action.type) {
-        case MessagesActionType.FETCH_MESSAGES_SUCCESS:
+        case MessagesActionType.ADD_MESSAGES:
+            return {
+                ...state,
+                messages: [...state.messages, action.payload],
+            };
+        case MessagesActionType.GET_MESSAGES:
             return {
                 ...state,
                 messages: [...state.messages, action.payload],
@@ -26,9 +32,15 @@ export const messagesReducer = (
     }
 };
 
-export const FetchMessagesSuccessActionCreator = (
+export const AddMessagesActionCreator = (
     payload: MessageType
-): FetchMessagesSuccessAction => ({
-    type: MessagesActionType.FETCH_MESSAGES_SUCCESS,
+): AddMessagesAction => ({
+    type: MessagesActionType.ADD_MESSAGES,
+    payload,
+});
+export const GetMessagesActionCreator = (
+    payload: MessageType
+): GetMessagesAction => ({
+    type: MessagesActionType.GET_MESSAGES,
     payload,
 });

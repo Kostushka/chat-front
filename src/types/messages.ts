@@ -8,12 +8,18 @@ export interface MessagesState {
 }
 
 export enum MessagesActionType {
-    FETCH_MESSAGES_SUCCESS = 'FETCH_MESSAGES_SUCCESS',
+    ADD_MESSAGES = 'ADD_MESSAGES',
+    GET_MESSAGES = 'GET_MESSAGES',
 }
 
-export interface FetchMessagesSuccessAction {
-    type: MessagesActionType.FETCH_MESSAGES_SUCCESS;
+export interface AddMessagesAction {
+    type: MessagesActionType.ADD_MESSAGES;
     payload: MessageType;
 }
 
-export type MessagesAction = FetchMessagesSuccessAction;
+export interface GetMessagesAction {
+    type: MessagesActionType.GET_MESSAGES;
+    payload: MessageType;
+}
+
+export type MessagesAction = AddMessagesAction | GetMessagesAction;
