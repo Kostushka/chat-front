@@ -2,12 +2,21 @@ import axios from "axios";
 import * as CookieHelper from "./cookie";
 
 const server = 'https://mmochat.online/';
-const Authorization = CookieHelper.get('chat_session_id');
+const Authorization = CookieHelper.get('chat_session_id') || '';
+axios.defaults.headers.common['Authorization'] = Authorization
 
 export const Server = (method: 'get'|'post'|'put'|'delete', url: string, data?: object) => {
-    return axios[method](`${server}${url}`, {...data, Authorization})
+    return axios[method](`${server}${url}`, data)
         .then(resp => {
-            if(resp.data.status) return {...resp.data}
+            const {data} = resp;
+
+            if(data.status === 401) {
+                CookieHelper.del('chat_session_id');
+                return location.replace('/login');
+            }
+
+            if(resp.data.status) return {...resp.data};
+
             return resp.data;
         });
 }

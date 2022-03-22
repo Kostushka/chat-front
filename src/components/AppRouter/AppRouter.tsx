@@ -6,6 +6,7 @@ import { IRoute } from '../../routes/routesConfig';
 
 const AppRouter: FC = () => {
     const isAuth = !!CookieHelper.get('chat_session_id');
+
     return (
         <Routes>
             {isAuth
