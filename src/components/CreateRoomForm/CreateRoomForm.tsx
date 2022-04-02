@@ -1,65 +1,57 @@
 import React, { FC, useState } from 'react';
+import { Formik, Form } from 'formik';
+import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { postRooms } from '../../api/getDataRooms';
 import UiButton from '../UI/UiButton';
+import UiInput from '../UI/UiInput';
+
 import styles from './CreateRoomForm.module.css';
 
 const CreateRoomForm: FC = () => {
-    const [inputNameValue, setInputNameValue] = useState('');
-    const [inputDescrValue, setInputDescrValue] = useState('');
-    const [inputTagsValue, setInputTagsValue] = useState(['']);
     const dispatch = useDispatch();
-    const handleTagsChange = (e: any) => {
-        const value = e.currentTarget.value;
-        setInputTagsValue([value]);
-    };
-    const handleClick = (e: any) => {
-        e.preventDefault();
-        dispatch(
-            postRooms({
-                name: inputNameValue,
-                description: inputDescrValue,
-                tags: inputTagsValue,
-            })
-        );
-        setInputNameValue('');
-        setInputDescrValue('');
-        setInputTagsValue(['']);
-    };
+
     return (
-        <form>
-            <div className={styles.container}>
-                <label htmlFor='name'>Имя</label>
-                <input
-                    name='name'
-                    type='text'
-                    value={inputNameValue}
-                    onChange={(e) => setInputNameValue(e.currentTarget.value)}
-                />
-
-                <label htmlFor='descr'>Описание</label>
-                <input
-                    name='descr'
-                    type='text'
-                    value={inputDescrValue}
-                    onChange={(e) => setInputDescrValue(e.currentTarget.value)}
-                />
-                <label htmlFor='tags'>Теги</label>
-                <input
-                    name='tags'
-                    type='text'
-                    value={inputTagsValue}
-                    onChange={handleTagsChange}
-                />
-
-                <UiButton
-                    disabled={!(inputNameValue && inputDescrValue)}
-                    onClick={handleClick}
-                >
-                    Создать комнату
-                </UiButton>
-            </div>
-        </form>
+        <div className={styles.container}>
+            <h1 className={styles.login}>Создать комнату</h1>
+            <Formik
+                initialValues={{ name: '', description: '', tags: '' }}
+                validationSchema={yup.object({
+                    name: yup
+                        .string()
+                        .min(3, 'Имя не может быть короче 3 символов')
+                        .required('Это обязательное поле!'),
+                    description: yup
+                        .string()
+                        .required('Это обязательное поле!'),
+                })}
+                onSubmit={(values) => {
+                    dispatch(
+                        postRooms({
+                            name: values.name,
+                            description: values.description,
+                            tags: [values.tags],
+                        })
+                    );
+                    values.name = '';
+                    values.description = '';
+                    values.tags = '';
+                }}
+            >
+                {() => (
+                    <Form>
+                        <UiInput label='Название' name='name' type='text' />
+                        <UiInput
+                            label='Описание'
+                            name='description'
+                            type='text'
+                        />
+                        <UiInput label='Теги' name='tags' type='text' />
+                        <UiButton type='submit'>Создать</UiButton>
+                    </Form>
+                )}
+            </Formik>
+        </div>
     );
 };
 

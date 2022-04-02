@@ -10,3 +10,26 @@ body {
     font-size: 0.8em;
     margin: 5px 0;
 }
+
+/* ---------------------------------------------- */
+/* SCROLL */
+/* ----------------------------------------------- */
+
+* {
+    scrollbar-color: rgba(0, 0, 0, 0.671) rgb(0, 0, 0, 0.3);
+    scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.671);
+    border-radius: 2px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0, 0.3);
+}
+::webkit-scrollbar-corner {
+    background-color: rgb(0, 0, 0, 0.3);
+}
