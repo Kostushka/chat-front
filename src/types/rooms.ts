@@ -10,6 +10,7 @@ export interface RoomsState {
     rows: RoomsType[];
     isLoading: boolean;
     isError: string | null;
+    roomId: number | null;
 }
 
 export enum RoomsActionType {

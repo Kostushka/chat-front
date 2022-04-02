@@ -13,6 +13,7 @@ const initialState: RoomsState = {
     rows: [],
     isLoading: false,
     isError: null,
+    roomId: null,
 };
 
 export const roomsReducer = (
