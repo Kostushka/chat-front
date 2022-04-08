@@ -30,7 +30,7 @@ const CreateRoomForm: FC = () => {
                         postRooms({
                             name: values.name,
                             description: values.description,
-                            tags: [values.tags],
+                            tags: values.tags.split(', '),
                         })
                     );
                     values.name = '';
@@ -40,13 +40,24 @@ const CreateRoomForm: FC = () => {
             >
                 {() => (
                     <Form>
-                        <UiInput label='Название' name='name' type='text' />
                         <UiInput
+                            placeholder='Введите название комнаты'
+                            label='Название'
+                            name='name'
+                            type='text'
+                        />
+                        <UiInput
+                            placeholder='Введите описание'
                             label='Описание'
                             name='description'
                             type='text'
                         />
-                        <UiInput label='Теги' name='tags' type='text' />
+                        <UiInput
+                            placeholder='Введите список тегов через запятую'
+                            label='Теги'
+                            name='tags'
+                            type='text'
+                        />
                         <UiButton type='submit'>Создать</UiButton>
                     </Form>
                 )}

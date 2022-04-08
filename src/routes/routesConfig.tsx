@@ -54,6 +54,14 @@ export const privateRoutes: IRoute[] = [
         ),
     },
     {
+        path: '/chat/:roomId',
+        element: (
+            <Suspense fallback={<UiPreloader />}>
+                <ChatForm />
+            </Suspense>
+        ),
+    },
+    {
         path: '*',
         element: (
             <Suspense fallback={<UiPreloader />}>

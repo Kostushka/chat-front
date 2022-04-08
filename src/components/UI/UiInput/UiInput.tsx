@@ -6,6 +6,7 @@ interface UiInputProps {
     label: string;
     name: string;
     type: string;
+    placeholder?: string;
 }
 
 const UiInput: FC<UiInputProps> = ({ label, ...props }) => {

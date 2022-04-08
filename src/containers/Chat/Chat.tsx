@@ -14,8 +14,13 @@ const Chat: FC = () => {
     const { rows, isLoading, isError, roomId } = useTypedSelector(
         (state) => state.rooms
     );
+
+    if (roomId) {
+        location.replace(`/chat/${roomId}`);
+    }
+
     const dispatch = useDispatch();
-    // console.log(`id: ${roomId}`);
+
     useEffect(() => {
         dispatch(getDataRooms());
     }, [roomId]);
@@ -49,7 +54,11 @@ const Chat: FC = () => {
                             <div className={styles.room_name} key={i}>
                                 <div>{el.name}</div>
                                 <div>{el.description}</div>
-                                <div>{el.tags}</div>
+                                <ul className={styles.tags}>
+                                    {el.tags.map((el, i) => (
+                                        <li key={i}>{el}</li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                 </div>

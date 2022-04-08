@@ -15,5 +15,9 @@
     transition: 0.2s;
 }
 .nav a:hover {
+    border-bottom: 2px dashed black;
+}
+.nav :global(a.active) {
     border-bottom: 2px solid black;
+    cursor: auto;
 }

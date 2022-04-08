@@ -13,7 +13,7 @@ module.exports = {
     entry: ['@babel/polyfill', './src/index.tsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js',
+        filename: '[name].[contenthash].js',
         publicPath: '/',
         chunkFilename: '[name].[id].[hash].js',
     },
@@ -46,7 +46,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash].css',
+            filename: '[name].[contenthash].css',
         }),
     ],
     module: {

@@ -21,3 +21,8 @@
 .error {
     margin: 20px 60px;
 }
+.tags {
+    list-style-type: none;
+    margin-top: 5px;
+    background-color: rgba(179, 176, 176, 0.842);
+}
