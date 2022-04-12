@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { loginUser } from '@actions/users';
-import { ILoginUser } from '../../actions/users';
-import UiButton from '../UI/UiButton';
-import UiInput from '../UI/UiInput';
+import { ILoginUser } from '../../../actions/users';
+import UiButton from '@components/UI/UiButton';
+import UiInput from '@components/UI/UiInput';
+
 import styles from './LoginForm.module.css';
 
 const LoginForm: FC = () => {

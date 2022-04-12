@@ -1,10 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { postRooms } from '../../api/getDataRooms';
-import UiButton from '../UI/UiButton';
-import UiInput from '../UI/UiInput';
+import { postRooms } from '../../../api/getDataRooms';
+import UiButton from '@components/UI/UiButton';
+import UiInput from '@components/UI/UiInput';
 
 import styles from './CreateRoomForm.module.css';
 

@@ -1,9 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { useTypedSelector } from '../../store';
 import { getDataRooms } from '../../api/getDataRooms';
-import CreateRoomForm from '@components/CreateRoomForm';
+import CreateRoomForm from '@containers/Chat/CreateRoomForm';
+import ChatRoom from './ChatRoom';
 import UiPreloader from '@components/UI/UiPreloader';
 import UiButton from '@components/UI/UiButton';
 
@@ -32,11 +33,6 @@ const Chat: FC = () => {
                         Начать чат
                     </UiButton>
                 </div>
-                {/* <div>
-                    <UiButton onClick={() => dispatch(getDataRooms())}>
-                        Список комнат
-                    </UiButton>
-                </div> */}
 
                 <CreateRoomForm />
             </div>
@@ -45,24 +41,7 @@ const Chat: FC = () => {
                 {isError && <h1 className='error'> {isError}</h1>}
             </div>
 
-            {isLoading ? (
-                <UiPreloader />
-            ) : (
-                <div className={styles.room_container}>
-                    {rows &&
-                        rows.map((el, i) => (
-                            <div className={styles.room_name} key={i}>
-                                <div>{el.name}</div>
-                                <div>{el.description}</div>
-                                <ul className={styles.tags}>
-                                    {el.tags.map((el, i) => (
-                                        <li key={i}>{el}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                </div>
-            )}
+            {isLoading ? <UiPreloader /> : <ChatRoom rows={rows} />}
         </>
     );
 };

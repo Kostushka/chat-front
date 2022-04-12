@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 import UiButton from '@components/UI/UiButton';
-import LoginForm from '@components/LoginForm';
-import RegistrationForm from '@components/RegistrationForm';
+import LoginForm from '@containers/Login/LoginForm';
+import RegistrationForm from '@containers/Login/RegistrationForm';
 import styles from './Login.module.css';
 
 const Login: FC = () => {

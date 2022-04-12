@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../../store';
-import { AddMessagesActionCreator } from '../../store/reducers/messagesReducer';
+import { useTypedSelector } from '../../../store';
+import { AddMessagesActionCreator } from '../../../store/reducers/messagesReducer';
 import UiButton from '@components/UI/UiButton';
 import profilePhoto from '@/assets/profile.svg';
 

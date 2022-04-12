@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { registerUser } from '@actions/users';
-import { IRegisterUser } from '../../actions/users';
-import UiButton from '../UI/UiButton';
-import UiInput from '../UI/UiInput';
-import UiRadioButton from '../UI/UiRadioButton';
+import { IRegisterUser } from '../../../actions/users';
+import UiButton from '@components/UI/UiButton';
+import UiInput from '@components/UI/UiInput';
+import UiRadioButton from '@components/UI/UiRadioButton';
 
 import styles from './RegistrationForm.module.css';
 
