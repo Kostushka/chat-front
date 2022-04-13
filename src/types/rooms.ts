@@ -1,6 +1,7 @@
 export type RoomsType = {
     id?: number;
     userId?: number;
+    status: string;
     name: string;
     description: string;
     tags: string[];

@@ -1,0 +1,55 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 197);
+    padding: 20px;
+}
+.back {
+    width: 30px;
+    object-fit: cover;
+    object-position: center center;
+    margin-bottom: 10px;
+    margin-left: 1px;
+    transition: 0.2s;
+}
+.back:hover {
+    cursor: pointer;
+    margin-left: -1px;
+}
+.room_name {
+    width: 180px;
+    margin-top: 20px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+.name {
+    margin-bottom: 5px;
+    padding: 3px 7px;
+}
+.description {
+    color: brown;
+    margin-bottom: 5px;
+    padding: 3px 7px;
+}
+.room_tags {
+    list-style-type: none;
+    padding: 3px 7px;
+    color: rgb(78, 54, 54);
+}
+.header {
+    font-size: 16px;
+    font-weight: 100;
+    color: rgb(58, 58, 58);
+    background-color: rgb(206, 206, 206);
+    padding: 3px 7px;
+}
+.open::after {
+    content: ' \25CF';
+    color: rgb(137, 248, 11);
+    font-size: 20px;
+}
+.close::after {
+    content: ' \25CF';
+    color: rgba(192, 9, 9, 0.89);
+    font-size: 20px;
+}
