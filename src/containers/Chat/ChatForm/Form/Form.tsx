@@ -11,7 +11,6 @@ interface FormProps {
 }
 const Form: FC<FormProps> = ({ messages }) => {
     let [value, setValue] = useState('');
-    console.log(value);
 
     const dispatch = useDispatch();
 
@@ -23,22 +22,7 @@ const Form: FC<FormProps> = ({ messages }) => {
         dispatch(AddMessagesActionCreator(newMessage));
         setValue('');
     };
-    // const onKeyDownPress = (e: any) => {
-    //     console.log(e);
 
-    //     if (e.key === 'Enter') {
-    //         value !== '' ? handleSubmit() : e.preventDefault();
-    //     }
-    //     if (e.keyCode == 13) {
-    //         e.preventDefault();
-    //     }
-    // };
-    // const handleChange = (e: any) => {
-    //     setValue(e.currentTarget.value);
-    //     if (e.shiftKey) {
-    //         value += '\r\n';
-    //     }
-    // };
     return (
         <div className={styles.chat}>
             Chat
@@ -69,7 +53,6 @@ const Form: FC<FormProps> = ({ messages }) => {
                     className={styles.textarea}
                     value={value}
                     onChange={(e) => setValue(e.currentTarget.value)}
-                    // onKeyDown={onKeyDownPress}
                 />
                 <div>
                     <UiButton onClick={handleSubmit} type='button'>
