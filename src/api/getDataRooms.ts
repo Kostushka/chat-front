@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { Server } from '@/helpers/server';
 import {
+    deleteRoomsActionCreator,
     fetchRoomsActionCreator,
     fetchRoomsErrorActionCreator,
     getRoomsActionCreator,
@@ -40,5 +41,26 @@ export const postRooms =
             setTimeout(() => {
                 dispatch(fetchRoomsErrorActionCreator(null));
             }, 5000);
+        }
+    };
+
+export const deleteRooms =
+    (id: number | undefined) => async (dispatch: Dispatch<RoomsAction>) => {
+        try {
+            const res = await Server('delete', `api/rooms/${id}`);
+            console.log(res);
+            dispatch(deleteRoomsActionCreator());
+            if (res.status === 403) {
+                dispatch(
+                    fetchRoomsErrorActionCreator(
+                        'У вас нет прав для этого действия'
+                    )
+                );
+                setTimeout(() => {
+                    dispatch(fetchRoomsErrorActionCreator(null));
+                }, 5000);
+            }
+        } catch (error) {
+            console.log(error);
         }
     };

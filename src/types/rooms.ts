@@ -1,7 +1,7 @@
 export type RoomsType = {
     id?: number;
     userId?: number;
-    status: string;
+    status?: string;
     name: string;
     description: string;
     tags: string[];
@@ -19,6 +19,7 @@ export enum RoomsActionType {
     FETCH_ROOMS_ERROR = 'FETCH_ROOMS_ERROR',
     GET_ROOMS = 'GET_ROOMS',
     POST_ROOMS = 'POST_ROOMS',
+    DELETE_ROOMS = 'DELETE_ROOMS',
 }
 
 export interface FetchRoomsAction {
@@ -39,9 +40,13 @@ export interface PostRoomsAction {
     type: RoomsActionType.POST_ROOMS;
     payload: RoomsType;
 }
+export interface DeleteRoomsAction {
+    type: RoomsActionType.DELETE_ROOMS;
+}
 
 export type RoomsAction =
     | FetchRoomsAction
     | FetchRoomsErrorAction
     | GetRoomsAction
-    | PostRoomsAction;
+    | PostRoomsAction
+    | DeleteRoomsAction;

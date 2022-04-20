@@ -1,4 +1,5 @@
 import {
+    DeleteRoomsAction,
     FetchRoomsAction,
     FetchRoomsErrorAction,
     GetRoomsAction,
@@ -29,6 +30,8 @@ export const roomsReducer = (
             return { ...state, isLoading: false, ...action.payload };
         case RoomsActionType.FETCH_ROOMS_ERROR:
             return { ...state, isLoading: false, isError: action.payload };
+        case RoomsActionType.DELETE_ROOMS:
+            return { ...state };
         default:
             return state;
     }
@@ -55,4 +58,8 @@ export const postRoomsActionCreator = (
 ): PostRoomsAction => ({
     type: RoomsActionType.POST_ROOMS,
     payload,
+});
+
+export const deleteRoomsActionCreator = (): DeleteRoomsAction => ({
+    type: RoomsActionType.DELETE_ROOMS,
 });

@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { deleteRooms } from '../../../api/getDataRooms';
+import UiButton from '../../../components/UI/UiButton';
 import { RoomsType } from '../../../types/rooms';
 import styles from './ChatRoom.module.css';
 
@@ -8,6 +11,7 @@ interface ChatRoomProps {
 }
 
 const ChatRoom: FC<ChatRoomProps> = ({ rows }) => {
+    const dispatch = useDispatch();
     return (
         <div className={styles.room_container}>
             {rows &&
@@ -27,6 +31,9 @@ const ChatRoom: FC<ChatRoomProps> = ({ rows }) => {
                                 ))}
                             </ul>
                         </NavLink>
+                        <UiButton onClick={() => dispatch(deleteRooms(el.id))}>
+                            Удалить
+                        </UiButton>
                     </div>
                 ))}
         </div>
