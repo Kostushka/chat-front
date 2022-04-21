@@ -3,7 +3,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -33,9 +33,9 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'initial',
+            chunks: 'async',
         },
-        minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
+        minimizer: [new UglifyJsPlugin(), new OptimizeCssAssetsPlugin()],
     },
     plugins: [
         new HtmlWebpackPlugin({
