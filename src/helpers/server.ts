@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as CookieHelper from "./cookie";
-
-const server = 'https://mmochat.online/';
+import {CONFIG} from "@config/config";
+const server: string = CONFIG.development.REST;
 const Authorization = CookieHelper.get('chat_session_id') || '';
 axios.defaults.headers.common['Authorization'] = Authorization
 

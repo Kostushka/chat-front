@@ -29,6 +29,7 @@ module.exports = {
             '@containers': path.resolve(__dirname, 'src/containers'),
             '@routes': path.resolve(__dirname, 'src/routes'),
             '@actions': path.resolve(__dirname, 'src/actions'),
+            '@config': path.resolve(__dirname, 'config'),
         },
     },
     optimization: {
