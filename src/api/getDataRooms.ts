@@ -45,7 +45,8 @@ export const postRooms =
     };
 
 export const deleteRooms =
-    (id: number | undefined) => async (dispatch: Dispatch<RoomsAction>) => {
+    (id: number | undefined) =>
+    async (dispatch: Dispatch<RoomsAction> | any) => {
         try {
             const res = await Server('delete', `api/rooms/${id}`);
             console.log(res);
@@ -60,7 +61,16 @@ export const deleteRooms =
                     dispatch(fetchRoomsErrorActionCreator(null));
                 }, 5000);
             }
+            dispatch(getDataRooms());
         } catch (error) {
             console.log(error);
+            dispatch(
+                fetchRoomsErrorActionCreator(
+                    `Ошибка удаления комнаты. ${error}`
+                )
+            );
+            setTimeout(() => {
+                dispatch(fetchRoomsErrorActionCreator(null));
+            }, 5000);
         }
     };

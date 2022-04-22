@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { deleteRooms } from '../../../api/getDataRooms';
+import { deleteRooms, getDataRooms } from '../../../api/getDataRooms';
 import UiButton from '../../../components/UI/UiButton';
+import { useTypedSelector } from '../../../store';
 import { RoomsType } from '../../../types/rooms';
 import styles from './ChatRoom.module.css';
 
@@ -11,7 +12,17 @@ interface ChatRoomProps {
 }
 
 const ChatRoom: FC<ChatRoomProps> = ({ rows }) => {
+    const { user } = useTypedSelector((state) => state.user);
+
     const dispatch = useDispatch();
+
+    const deleteRoomsHandle = (id: number | undefined) => {
+        dispatch(deleteRooms(id));
+        // setTimeout(() => {
+        //     dispatch(getDataRooms());
+        // }, 500);
+    };
+
     return (
         <div className={styles.room_container}>
             {rows &&
@@ -31,9 +42,11 @@ const ChatRoom: FC<ChatRoomProps> = ({ rows }) => {
                                 ))}
                             </ul>
                         </NavLink>
-                        <UiButton onClick={() => dispatch(deleteRooms(el.id))}>
-                            Удалить
-                        </UiButton>
+                        {user.role === 'admin' && (
+                            <UiButton onClick={() => deleteRoomsHandle(el.id)}>
+                                Удалить
+                            </UiButton>
+                        )}
                     </div>
                 ))}
         </div>
