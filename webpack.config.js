@@ -30,6 +30,7 @@ module.exports = {
             '@routes': path.resolve(__dirname, 'src/routes'),
             '@actions': path.resolve(__dirname, 'src/actions'),
             '@config': path.resolve(__dirname, 'config'),
+            '@helpers': path.resolve(__dirname, 'src/helpers'),
         },
     },
     optimization: {

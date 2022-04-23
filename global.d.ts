@@ -9,3 +9,5 @@ declare module '@actions';
 declare module '@actions/*';
 declare module '@config';
 declare module '@config/*';
+declare module '@helpers';
+declare module '@helpers/*';
