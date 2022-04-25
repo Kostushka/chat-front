@@ -19,7 +19,8 @@ const CreateRoomForm: FC = () => {
                 validationSchema={yup.object({
                     name: yup
                         .string()
-                        .min(3, 'Имя не может быть короче 3 символов')
+                        .min(3, 'Название не может быть короче 3 символов')
+                        .max(15, 'Название не может быть длиннее 15 символов')
                         .required('Это обязательное поле!'),
                     description: yup
                         .string()
