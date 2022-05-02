@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    display: flex;
+    margin-right: 20px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.container span {
+    margin-right: 15px;
+}
+.name {
+    color: brown;
+}
+.status {
+    background-color: rgba(248, 255, 240, 0.877);
+    border-radius: 3px;
+    padding: 0 5px;
+    color: rgb(132, 194, 39);
+}
+.img {
+    width: 30px;
+    object-fit: cover;
+    object-position: center center;
+    margin-right: 10px;
+}

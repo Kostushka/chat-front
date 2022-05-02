@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import * as CookieHelper from '@/helpers/cookie';
+import User from '../../containers/User';
 
 const Navigation: FC = () => {
     const isAuth = !!CookieHelper.get('chat_session_id');
@@ -20,17 +21,20 @@ const Navigation: FC = () => {
                 </li>
             )}
             {isAuth && (
-                <li className={styles.nav}>
-                    <NavLink
-                        onClick={() => {
-                            CookieHelper.del('chat_session_id');
-                            location.replace('/login');
-                        }}
-                        to='/login'
-                    >
-                        Выход
-                    </NavLink>
-                </li>
+                <>
+                    <li className={styles.nav}>
+                        <NavLink
+                            onClick={() => {
+                                CookieHelper.del('chat_session_id');
+                                location.replace('/login');
+                            }}
+                            to='/login'
+                        >
+                            Выход
+                        </NavLink>
+                    </li>
+                    <User />
+                </>
             )}
         </ul>
     );

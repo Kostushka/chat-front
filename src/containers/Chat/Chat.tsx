@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { useTypedSelector } from '../../store';
 import { getDataRooms } from '../../api/getDataRooms';
-import { getUser } from '../../api/getUser';
 import CreateRoomForm from '@containers/Chat/CreateRoomForm';
 import ChatRoom from './ChatRoom';
 import UiPreloader from '@components/UI/UiPreloader';
@@ -25,7 +24,6 @@ const Chat: FC = () => {
 
     useEffect(() => {
         dispatch(getDataRooms());
-        dispatch(getUser());
     }, [roomId]);
     return (
         <>
