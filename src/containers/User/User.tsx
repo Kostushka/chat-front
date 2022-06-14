@@ -1,6 +1,4 @@
-import React, { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getUser, updateUser } from '../../api/getUser';
+import React, { FC } from 'react';
 import UiPreloader from '../../components/UI/UiPreloader';
 import { useTypedSelector } from '../../store';
 import profileImg from '../../assets/profile.svg';
@@ -9,10 +7,7 @@ import styles from './User.module.css';
 
 const User: FC = () => {
     const { user, isLoading } = useTypedSelector((state) => state.user);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getUser());
-    }, []);
+
     // const fileSelectHandler = (e: any) => {
     //     dispatch(
     //         updateUser({
