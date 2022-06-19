@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../../../store';
 import { useChat } from '../../../hooks/useChat';
+import { getDataRooms } from '../../../api/getDataRooms';
 import Info from './Info';
 import Form from './Form';
 
@@ -13,16 +14,17 @@ const ChatForm: FC = () => {
     const { messages } = useTypedSelector((state) => state.messages);
     const { rows } = useTypedSelector((state) => state.rooms);
     const { roomId } = useParams();
-    const {users, log} = useChat(Number(roomId));
+    const { users, log } = useChat(Number(roomId));
 
     useEffect(() => {
         console.log('users', users);
-        console.log('log', log)
+        console.log('log', log);
+        dispatch(getDataRooms());
     }, [users, log]);
 
     return (
         <div className={styles.container}>
-            <Info rows={rows} roomId={roomId} /> {/*//TODO не отображается инфо о комнате при обновлении страницы внутри комнаты*/}
+            <Info rows={rows} roomId={roomId} />
             <Form messages={messages} />
         </div>
     );

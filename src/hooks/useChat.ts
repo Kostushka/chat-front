@@ -12,22 +12,21 @@ export const useChat = (roomId: number | null) => {
     const io = socket(roomId);
 
     useEffect(() => {
-        if(!io.connected) {
+        if (!io.connected) {
             io.connect();
         }
         //сообщаем о подключении нового пользователя
         io.on('connect', () => {
-            console.log('user', user)
+            console.log('user', user);
             setTimeout(() => {
                 io.emit('user:add', user);
-            }, 100)
+            }, 100);
 
             // запрашиваем сообщения из БД
             // io.emit('message:get');
-        })
+        });
 
-
-         // обрабатываем получение системного сообщения
+        // обрабатываем получение системного сообщения
         io.on('log', (log) => {
             setLog(log);
         });
@@ -44,7 +43,7 @@ export const useChat = (roomId: number | null) => {
 
         return () => {
             io.disconnect().close();
-        }
+        };
     }, []);
 
     // метод для отправки сообщения
