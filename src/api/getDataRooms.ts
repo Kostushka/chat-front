@@ -13,7 +13,7 @@ export const getDataRooms = () => async (dispatch: Dispatch<RoomsAction>) => {
     try {
         dispatch(fetchRoomsActionCreator());
         const res = await Server('get', 'api/rooms/all');
-        console.log(res);
+        // console.log(res);
         dispatch(getRoomsActionCreator(res));
     } catch (error) {
         console.log(error);
@@ -31,7 +31,7 @@ export const postRooms =
         try {
             dispatch(fetchRoomsActionCreator());
             const res = await Server('post', 'api/rooms/create', data);
-            console.log(res);
+            // console.log(res);
             dispatch(postRoomsActionCreator(res));
         } catch (error) {
             console.log(error);
@@ -49,7 +49,7 @@ export const deleteRooms =
     async (dispatch: Dispatch<RoomsAction> | any) => {
         try {
             const res = await Server('delete', `api/rooms/${id}`);
-            console.log(res);
+            // console.log(res);
             dispatch(deleteRoomsActionCreator());
             if (res.status === 403) {
                 dispatch(
