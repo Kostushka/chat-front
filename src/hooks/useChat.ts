@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { socket } from '../helpers/socket';
 import { USER_KEY } from '../constants/constants';
 import { storage } from '../utils/storage';
+import { UserType } from '../types/user';
 
 export const useChat = (roomId: number | null) => {
     const user = storage.get(USER_KEY);
 
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState<UserType[]>([]);
     const [messages, setMessages] = useState();
     const [log, setLog] = useState('');
     const io = socket(roomId);
@@ -17,7 +18,7 @@ export const useChat = (roomId: number | null) => {
         }
         //сообщаем о подключении нового пользователя
         io.on('connect', () => {
-            console.log('user', user);
+            // console.log('user', user);
             setTimeout(() => {
                 io.emit('user:add', user);
             }, 100);

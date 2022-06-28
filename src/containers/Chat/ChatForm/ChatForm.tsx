@@ -6,6 +6,7 @@ import { useChat } from '../../../hooks/useChat';
 import { getDataRooms } from '../../../api/getDataRooms';
 import Info from './Info';
 import Form from './Form';
+import UiPreloader from '@components/UI/UiPreloader';
 
 import styles from './ChatForm.module.css';
 
@@ -24,8 +25,14 @@ const ChatForm: FC = () => {
 
     return (
         <div className={styles.container}>
-            <Info rows={rows} roomId={roomId} />
-            <Form messages={messages} />
+            {rows.length === 0 || users.length === 0 ? (
+                <UiPreloader />
+            ) : (
+                <>
+                    <Info rows={rows} roomId={roomId} users={users} />
+                    <Form messages={messages} />
+                </>
+            )}
         </div>
     );
 };

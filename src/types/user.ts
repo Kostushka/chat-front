@@ -5,6 +5,7 @@ export type UserType = {
     status?: string;
     role?: string;
     avatar: string;
+    soketId?: string;
 };
 
 export interface UserState {

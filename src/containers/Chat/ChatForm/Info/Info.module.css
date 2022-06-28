@@ -43,6 +43,13 @@
     background-color: rgb(206, 206, 206);
     padding: 3px 7px;
 }
+.header_users {
+    font-size: 16px;
+    font-weight: 100;
+    color: rgb(58, 58, 58);
+    background-color: rgb(245, 179, 56);
+    padding: 3px 7px;
+}
 .open::after {
     content: ' \25CF';
     color: rgb(137, 248, 11);
@@ -52,4 +59,22 @@
     content: ' \25CF';
     color: rgba(192, 9, 9, 0.89);
     font-size: 20px;
+}
+
+.users {
+    list-style-type: none;
+    min-width: 180px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.username {
+    margin-bottom: 5px;
+    padding: 3px 7px;
+}
+.status {
+    font-size: 15px;
+    color: rgb(98, 170, 15);
+    padding-left: 10px;
 }
