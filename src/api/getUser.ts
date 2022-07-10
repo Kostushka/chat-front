@@ -27,5 +27,7 @@ export const updateUser =
             const res = await Server('post', 'api/users/update/self', data);
             // console.log(res);
             dispatch(postUserActionCreator(res));
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
     };
