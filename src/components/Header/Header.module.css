@@ -43,3 +43,13 @@
     color: rgba(192, 9, 9, 0.89);
     font-size: 20px;
 }
+
+.input_status {
+    outline: none;
+    padding: 3px 5px;
+}
+
+.status {
+    color: rgb(238, 122, 13);
+    cursor: pointer;
+}
